@@ -1,0 +1,20 @@
+videoName = 'ETH-Sun';
+output_videoName = 'ETH-Sunnyday';
+outputVideo = VideoWriter(['/home/rahulgw/AswathyPhd/MDP/MDP_Tracking/images/ETH-Sunnyday/',output_videoName]);
+outputVideo.FrameRate = 5;
+open(outputVideo)
+%%
+% resultPath = 'siameseResultsV5\';
+% resultPath = 'siameseResults_no_rtn\';
+videoPath = '/home/rahulgw/AswathyPhd/MDP/MDP_Tracking/images/ETH-Sunnyday/';
+imgDir = dir([videoPath,'*.jpg']);
+images = sort({imgDir.name});
+%for ii = 43:numel(images)
+  for ii = 1:300 
+   imgPath = [videoPath,num2str(ii),'.jpg'];
+   img = imread(imgPath);
+   img=imresize(img,[400,500]);
+   writeVideo(outputVideo,img)
+ end
+
+close(outputVideo)
